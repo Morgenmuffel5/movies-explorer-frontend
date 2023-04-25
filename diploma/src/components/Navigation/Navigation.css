@@ -1,0 +1,128 @@
+
+.menu {
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: flex-end;
+    display: flex;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.3s, opacity 0.5s linear;
+    box-sizing: border-box;
+}
+
+.menu_visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+.menu__card {
+    background-color: #202020;
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 22px;
+    padding-right: 22px;
+    box-sizing: border-box;
+
+}
+
+
+@media all and (max-width: 320px) {
+    .menu__card {
+        padding-top: 13px;
+        padding-right: 13px;
+        width: 100%;
+    }
+}
+
+.menu__button-cont {
+    align-self: flex-end;
+}
+
+.menu__close-button {
+    background-image: url("../../images/close_icon.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 22px;
+    height: 22px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 105px;
+}
+
+@media all and (max-width: 320px) {
+    .menu__close-button  {
+        margin-bottom: 100px;
+    }
+}
+
+.menu__close-button:hover {
+    opacity: 0.8;
+}
+
+.menu__container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 28px;
+    box-sizing: border-box;
+}
+
+@media all and (max-width: 320px) {
+    .menu__container  {
+        row-gap: 24px;
+    }
+}
+
+.menu__link {
+    color: #FFFFFF;
+    text-decoration: none;
+    text-align: center;
+}
+
+.menu__link:hover {
+    opacity: 0.7;
+}
+
+.menu__link_underline {
+    text-decoration: underline;
+}
+
+.menu__account {
+    align-self: center;
+   position: absolute;
+    bottom: 92px;
+}
+
+@media all and (max-width: 320px) {
+    .menu__account  {
+        bottom: 48px;
+    }
+}
+
+.menu__link-container {
+    display: flex;
+    box-sizing: border-box;
+}
+
+.menu__account-text {
+    padding: 7px 17px 7px 0;
+    font-size: 14px;
+}
+
+.menu__icon {
+    width: 26px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: #313131;
+    background-image: url("../../images/account_icon.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+}

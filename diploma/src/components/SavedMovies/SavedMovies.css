@@ -1,0 +1,23 @@
+.films {
+    padding-left: 70px;
+    padding-right: 70px;
+    max-width: 1280px;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+@media all and (max-width: 768px) {
+    .films {
+        padding-left: 30px;
+        padding-right: 30px;
+        max-width: 768px;
+        padding-top: 90px;
+    }
+}
+@media all and (max-width: 320px) {
+    .films {
+        padding-left: 10px;
+        padding-right: 10px;
+        max-width: 320px;
+    }
+}

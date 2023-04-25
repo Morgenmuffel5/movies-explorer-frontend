@@ -1,0 +1,22 @@
+.page {
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    background-color: #202020;
+    min-height: 100vh;
+}
+
+.page__content {
+    width: 100%;
+    min-height: 100vh;
+    margin: auto;
+    font-family: 'Inter', 'Times New Roman', Times, serif;
+    color: #FFFFFF;
+    box-sizing: border-box;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+}

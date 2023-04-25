@@ -1,0 +1,136 @@
+.register {
+    max-width: 410px;
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 70px;
+    box-sizing: border-box;
+}
+
+@media all and (max-width: 768px) {
+    .register  {
+        padding-bottom: 269px;
+        max-width: 50%;
+    }
+}
+
+@media all and (max-width: 450px) {
+    .register  {
+        max-width: 80%;
+
+        padding-bottom: 40px;
+    }
+}
+
+.register__title {
+    margin: 0;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.2;
+    box-sizing: border-box;
+}
+
+@media all and (max-width: 320px) {
+    .register__title   {
+        padding-bottom: 40px;
+        text-align: center;
+    }
+}
+
+.register__form {
+    padding-top: 40px;
+    box-sizing: border-box;
+}
+
+.register__input-cont {
+    padding-bottom: 24px;
+    box-sizing: border-box;
+}
+
+.register__label {
+    font-size: 10px;
+    line-height: 1.2;
+    color: #8B8B8B;
+    box-sizing: border-box;
+}
+
+.register__input {
+    display: block;
+    width: 100%;
+    background: none;
+    color: white;
+    font-size: 14px;
+    border: none;
+    border-bottom: 1px solid #424242;
+    box-sizing: border-box;
+}
+
+.register__submit-button {
+    width: 100%;
+    background-color: #4285F4;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.2;
+    border: none;
+    color: #FFFFFF;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    margin-top: calc(152px - 24px);
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.register__submit-button_disabled {
+    cursor: auto;
+    opacity: 0.4;
+    color: #C2C2C2;
+}
+
+.register__submit-button:hover {
+    opacity: 0.8;
+}
+
+
+
+@media all and (max-width: 320px) {
+    .register__submit-button   {
+        font-size: 12px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        margin-top: 240px;
+    }
+}
+
+.register__sign-in {
+    font-size: 14px;
+    line-height: 1.2;
+    text-align: center;
+    color: #8B8B8B;
+    box-sizing: border-box;
+}
+
+@media all and (max-width: 320px) {
+    .register__sign-in  {
+        font-size: 12px;
+    }
+}
+
+.register__link {
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.2;
+    text-align: center;
+    color: #4285F4;
+    box-sizing: border-box;
+}
+
+.register__link:hover {
+    opacity: 0.7;
+}
+
+@media all and (max-width: 320px) {
+    .register__link {
+        font-size: 12px;
+    }
+}
+
+

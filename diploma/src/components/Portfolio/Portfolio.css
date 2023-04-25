@@ -1,0 +1,110 @@
+.portfolio {
+    max-width: 1280px;
+    padding: 0 70px 105px 70px;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+@media all and (max-width: 768px) {
+    .portfolio {
+        max-width: 768px;
+        padding: 0 50px 90px 50px;
+    }
+}
+
+@media all and (max-width: 320px) {
+    .portfolio {
+        max-width: 320px;
+        padding: 0 14px 70px 14px;
+    }
+}
+
+.portfolio__title {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.1;
+    color: #8B8B8B;
+    padding-bottom: 30px;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+@media all and (max-width: 320px) {
+    .portfolio__title {
+        font-size: 14px;
+        padding-bottom: 20px;
+    }
+}
+
+.portfolio__link {
+    width: 100%;
+    text-decoration: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+.portfolio__link:nth-child(3) {
+    border-top: #424242 solid 1px;
+    border-bottom: #424242 solid 1px;
+}
+
+.portfolio__link:hover {
+    opacity: 0.7;
+}
+
+@media all and (max-width: 768px) {
+    .portfolio__link:nth-child(3) {
+        border-top: #E6E6E6 solid 1px;
+        border-bottom: #E6E6E6 solid 1px;
+    }
+}
+
+.portfolio__text {
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 1.6;
+    letter-spacing: -0.04em;
+    text-decoration: none;
+    color: #FFFFFF;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    box-sizing: border-box;
+}
+
+@media all and (max-width: 768px) {
+    .portfolio__text {
+        font-size: 28px;
+    }
+}
+
+@media all and (max-width: 400px) {
+    .portfolio__text {
+        font-size: 18px;
+    }
+}
+
+.portfolio__icon {
+    width: 29px;
+    height: 60px;
+    background-image: url("../../images/portfolio_link_icon.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 20px;
+    box-sizing: border-box;
+}
+
+@media all and (max-width: 768px) {
+    .portfolio__icon {
+        width: 27px;
+        height: 60px;
+    }
+}
+
+@media all and (max-width: 400px) {
+    .portfolio__icon {
+        width: 18px;
+        height: 28px;
+    }
+}
