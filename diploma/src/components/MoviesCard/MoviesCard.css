@@ -16,7 +16,7 @@
     box-sizing: border-box;
 }
 
-@media all and (max-width: 320px) {
+@media all and (max-width: 400px) {
     .films__info  {
         display: flex;
         justify-content: space-between;
@@ -61,7 +61,7 @@
 .films__like {
     height: 12px;
     width: 14px;
-    background-image: url("../../images/like-noactive.png");
+    background-image: url("../../images/like-noactive.svg");
     background-repeat: no-repeat;
     background-position: center;
     box-sizing: border-box;
@@ -71,7 +71,7 @@
 }
 
 .films__like_active {
-    background-image: url("../../images/like.png");
+    background-image: url("../../images/like.svg");
 }
 
 .films__like:hover{
@@ -81,7 +81,7 @@
 .films__delete {
     width: 14px;
     height: 12px;
-    background-image: url("../../images/delete.png");
+    background-image: url("../../images/delete.svg");
     background-repeat: no-repeat;
     background-position: center;
     border: none;
@@ -104,12 +104,13 @@
     background-repeat: no-repeat;
     box-sizing: border-box;
     margin: 6px 6px 6px 0;
+    object-fit: cover;
 }
 
 
 
 
-@media all and (max-width: 500px) {
+@media all and (max-width: 400px) {
     .films__img  {
         width: 100%;
         height: 168px;

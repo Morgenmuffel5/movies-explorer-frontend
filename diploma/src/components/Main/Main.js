@@ -6,6 +6,7 @@ import Techs from "../Techs/Techs";
 import AboutMe from "../AboutMe/AboutMe";
 import Portfolio from "../Portfolio/Portfolio";
 import Footer from "../Footer/Footer";
+import Navigation from "../Navigation/Navigation";
 
 function Main (props) {
     const [isMenuOpen, setMenuOpen] = React.useState(false);
@@ -22,6 +23,8 @@ function Main (props) {
                 <Portfolio />
             </main>
             <Footer />
+            <Navigation closeMenu={props.closeMenu}
+                        isMenuOpen={props.isMenuOpen} />
         </>
     )
 }

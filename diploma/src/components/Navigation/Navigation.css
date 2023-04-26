@@ -46,7 +46,7 @@
 }
 
 .menu__close-button {
-    background-image: url("../../images/close_icon.png");
+    background-image: url("../../images/close-icon.svg");
     background-repeat: no-repeat;
     background-position: center;
     width: 22px;
@@ -121,7 +121,7 @@
     height: 30px;
     border-radius: 4px;
     background-color: #313131;
-    background-image: url("../../images/account_icon.png");
+    background-image: url("../../images/account-icon.svg");
     background-position: center;
     background-repeat: no-repeat;
     box-sizing: border-box;

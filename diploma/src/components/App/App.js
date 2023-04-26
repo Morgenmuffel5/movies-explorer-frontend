@@ -36,7 +36,9 @@ function App() {
 
                     <Route exact path="/">
                         <Main loggedIn={loggedIn}
-                              openMenu={openMenu}/>
+                              openMenu={openMenu}
+                        closeMenu={closeMenu}
+                        isMenuOpen={isMenuOpen}/>
                     </Route>
 
 
@@ -77,3 +79,4 @@ function App() {
 }
 
 export default App;
+

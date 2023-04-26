@@ -18,7 +18,7 @@ function Navigation(props) {
 
                 <div className="menu__container">
                     <Link to="/" onClick={closeMenu}
-                          className="menu__link">
+                          className={`menu__link  ${history.location.pathname === "/" ? 'menu__link_underline' : ''}`}>
                         Главная
                     </Link>
                     <Link to="/movies" onClick={closeMenu}

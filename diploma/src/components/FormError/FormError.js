@@ -3,7 +3,7 @@
 function FormError (props) {
     return (
         <div id={props.identificator}>
-            <span className="inputError">{props.message}</span>
+            <span className="input-error">{props.message}</span>
         </div>
     )
 }

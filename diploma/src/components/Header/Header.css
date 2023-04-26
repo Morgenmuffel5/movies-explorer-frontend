@@ -35,21 +35,25 @@
 .header__container_sign {
     max-width: calc(1280px - 435px *2);
     padding: 50px 0 0 0;
-
 }
 
 @media all and (max-width: 768px) {
     .header__container_sign {
-        max-width: calc(100% - 179px *2);
+        max-width: 50%;
         padding-top: 212px;
     }
 }
 
 @media all and (max-width: 450px) {
     .header__container_sign {
-        max-width: calc(100% - 30px *2);
-        justify-content: center;
+        max-width: 80%;
         padding-top: 46px;
+    }
+}
+
+@media all and (max-width: 320px) {
+    .header__container_sign {
+        justify-content: center;
     }
 }
 
@@ -57,7 +61,7 @@
     width: 38px;
     height: 38px;
     display: block;
-    background-image: url("../../images/logo.png");
+    background-image: url("../../images/logo.svg");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;

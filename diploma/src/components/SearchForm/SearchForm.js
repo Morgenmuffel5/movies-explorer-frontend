@@ -1,6 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
 
-function SearchForm () {
+function SearchForm() {
 
     const [isShortFilms, setIsShortFilms] = React.useState(true);
 
@@ -9,14 +9,16 @@ function SearchForm () {
     }
 
     return (
-        <section className="search">
-            <div className="search__container">
-                <input className="search__input" placeholder="Фильм"/>
+        <div className="search">
+            <form className="search__container">
+                <input className="search__input"
+                       placeholder="Фильм"
+                       required/>
                 <button className="search__button">Найти</button>
-            </div>
+            </form>
 
             <div className="search__toggle-container">
-                <label className="search__toggle">
+                <div className="search__toggle">
                     <input
                         type="checkbox"
                         checked={isShortFilms}
@@ -26,10 +28,10 @@ function SearchForm () {
                     <div className="search__visible-checkbox">
                         <div className={`search__circle ${isShortFilms ? '' : 'search__circle_inactive'}`}></div>
                     </div>
-                </label>
+                </div>
                 <span className="search__toggle-text">Короткометражки</span>
             </div>
-        </section>
+        </div>
     )
 }
 

@@ -15,7 +15,7 @@ function MoviesCard (props) {
                 <button className={`films__like ${props.film.owner !== '' ? 'films__like_active' : ''} ${history.location.pathname === "/saved-movies" ? 'films__delete_hide' : ''}`}></button>
                 <button className={`films__delete ${history.location.pathname === "/saved-movies" ? '' : 'films__delete_hide'}`}></button>
             </div>
-            <img className="films__img" src={props.film.image}/>
+            <img className="films__img" alt={'Постер к фильму ' + props.film.nameRU} src={props.film.image}/>
         </div>
     )
 }
