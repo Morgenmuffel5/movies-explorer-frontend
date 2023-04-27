@@ -1,0 +1,124 @@
+.account {
+    max-width: 410px;
+    margin: auto;
+    padding-top: 74px;
+    padding-bottom: 70px;
+    box-sizing: border-box;
+}
+
+@media all and (max-width: 768px) {
+    .account   {
+        padding-bottom: 269px;
+        max-width: 50%;
+        padding-top: 236px;
+    }
+}
+
+@media all and (max-width: 450px) {
+    .account   {
+        max-width: 80%;
+        padding-top: 70px;
+        padding-bottom: 40px;
+    }
+}
+
+.account__title {
+    margin: 0;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.2;
+    box-sizing: border-box;
+}
+
+@media all and (max-width: 320px) {
+    .account__title   {
+        padding-bottom: 40px;
+        text-align: center;
+    }
+}
+
+.account__title_center {
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.account__info {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.account__info:nth-child(2) {
+    border-bottom: 1px solid #424242;
+    padding-top: 123px;
+}
+.account__info:nth-child(3) {
+    padding-bottom: 220px;
+}
+
+@media all and (max-width: 768px) {
+    .account__info:nth-child(2)  {
+        padding-top: 96px;
+    }
+}
+
+@media all and (max-width: 320px) {
+    .account__info:nth-child(2)  {
+        padding-top: 80px;
+    }
+}
+
+@media all and (max-width: 768px) {
+    .account__info:nth-child(3)  {
+        padding-bottom: 210px;
+    }
+}
+
+@media all and (max-width: 320px) {
+    .account__info:nth-child(3)  {
+        padding-bottom: 300px;
+    }
+}
+
+.account__text {
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 1.2;
+    padding-bottom: 17px;
+    padding-top: 17px;
+    box-sizing: border-box;
+}
+
+.account__text {
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 1.2;
+    padding-bottom: 17px;
+    padding-top: 17px;
+    box-sizing: border-box;
+}
+
+.account__button {
+    font-size: 13px;
+    line-height: 1.2;
+    color: #FFFFFF;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: block;
+    padding-bottom: 16px;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.account__button:hover {
+    opacity: 0.8;
+}
+
+.account__button_red-text {
+    color: #EE3465;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-size: 13px;
+}

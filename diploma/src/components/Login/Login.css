@@ -1,0 +1,132 @@
+.login {
+    max-width: 410px;
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 70px;
+    box-sizing: border-box;
+}
+
+@media all and (max-width: 768px) {
+    .login   {
+        padding-bottom: 269px;
+        max-width: 50%;
+    }
+}
+
+@media all and (max-width: 450px) {
+    .login   {
+        max-width: 80%;
+
+        padding-bottom: 40px;
+    }
+}
+
+.login__title {
+    margin: 0;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.2;
+    box-sizing: border-box;
+}
+
+@media all and (max-width: 320px) {
+    .login__title   {
+        padding-bottom: 40px;
+        text-align: center;
+    }
+}
+
+.login__form {
+    padding-top: 40px;
+    box-sizing: border-box;
+}
+
+.login__input-cont {
+    padding-bottom: 24px;
+    box-sizing: border-box;
+}
+
+.login__label {
+    font-size: 10px;
+    line-height: 1.2;
+    color: #8B8B8B;
+    box-sizing: border-box;
+}
+
+.login__input {
+    display: block;
+    padding: 5px 0 10px 0;
+    width: 100%;
+    background: none;
+    color: white;
+    font-size: 14px;
+    border: none;
+    border-bottom: 1px solid #424242;
+    box-sizing: border-box;
+}
+
+
+.login__submit-button {
+    width: 100%;
+    background-color: #4285F4;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.2;
+    border: none;
+    color: #FFFFFF;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    margin-top: calc(179px + 42px - 24px);
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.login__submit-button:hover {
+    opacity: 0.8;
+}
+
+.login__submit-button_disabled {
+    cursor: auto;
+    opacity: 0.4;
+    color: #C2C2C2;
+}
+
+
+
+@media all and (max-width: 320px) {
+    .login__submit-button   {
+        font-size: 12px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        margin-top: 267px;
+    }
+}
+
+.login__sign-in {
+    font-size: 14px;
+    line-height: 1.2;
+    text-align: center;
+    color: #8B8B8B;
+    box-sizing: border-box;
+}
+
+@media all and (max-width: 320px) {
+    .login__sign-in  {
+        font-size: 12px;
+    }
+}
+
+.login__link {
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.2;
+    text-align: center;
+    color: #4285F4;
+    box-sizing: border-box;
+}
+
+@media all and (max-width: 320px) {
+    .login__link {
+        font-size: 12px;
+    }
+}

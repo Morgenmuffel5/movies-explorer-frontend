@@ -1,0 +1,125 @@
+.search {
+    padding: 80px 0 40px 0;
+    border-bottom: 1px solid #424242;
+    box-sizing: border-box;
+}
+
+@media all and (max-width: 768px) {
+    .search {
+        padding-top: 0;
+    }
+}
+
+.search__container {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 31px;
+    box-sizing: border-box;
+}
+
+.search__input {
+    width: calc(95%) ;
+    border-radius: 4px;
+    background-color: #2F2F2F;
+    border: none;
+    color: #8B8B8B;
+    padding: 15px 0 15px 22px;
+    box-sizing: border-box;
+}
+
+@media all and (max-width: 320px) {
+    .search__input {
+        padding: 13px 0 13px 16px;
+        font-size: 12px;
+    }
+}
+
+.search__button {
+    background-color: #4285F4;
+    border-radius: 40px;
+    border: none;
+    width: 70px;
+    height: 44px;
+    box-sizing: border-box;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #FFFFFF;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.search__button:hover {
+    opacity: 0.8;
+}
+
+.search__toggle-container {
+    display: flex;
+    justify-content: center ;
+    box-sizing: border-box;
+}
+
+.search__toggle {
+    position: relative;
+    cursor: pointer;
+    display: block;
+    width: 36px;
+    height: 20px;
+    margin-right: 12px;
+    box-sizing: border-box;
+}
+
+.search__checkbox {
+    position: absolute;
+    min-width: 1px;
+    height: 1px;
+    display: none;
+    clip-path: inset(0 0 0 0);
+    box-sizing: border-box;
+}
+
+.search__checkbox:checked + .search__visible-checkbox {
+    flex-direction: row-reverse;
+    background-color: #2F2F2F;
+    box-shadow: 0px 4px 4px rgba(50, 50, 71, 0.08), 0px 4px 8px rgba(50, 50, 71, 0.06);
+}
+
+.search__checkbox:disabled + .search__visible-checkbox {
+    background-color: #2F2F2F;
+    box-shadow: 0px 4px 4px rgba(50, 50, 71, 0.08), 0px 4px 8px rgba(50, 50, 71, 0.06);
+}
+
+.search__visible-checkbox {
+    min-width: 36px;
+    height: 20px;
+    background: #2F2F2F;
+    border-radius: 20px;
+    display: flex;
+    transition: background-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.search__circle {
+    margin: 2px;
+    min-width: 16px;
+    height: 16px;
+    background: #3DDC84;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.search__circle_inactive {
+    background-color: #A0A0A0;
+}
+
+.search__toggle-text {
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+@media all and (max-width: 320px) {
+    .search__toggle-text {
+        font-size: 11px;
+    }
+}
