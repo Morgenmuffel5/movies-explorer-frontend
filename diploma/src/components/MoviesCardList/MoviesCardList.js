@@ -1,13 +1,25 @@
 import MoviesCard from "../MoviesCard/MoviesCard";
+import Preloader from "../Preloader/Preloader";
+import React from "react";
+import RequestError from "../RequestError/RequestError";
 
+function MoviesCardList(props) {
+    const like = (film) => {
+        props.like(film)
+    }
 
-function MoviesCardList (props) {
-
+    const deleteFilm = (id) => {
+        props.delete(id);
+    }
     return (
         <section className="films__list">
+
             {props.films.map((filmItem) => (
                 <MoviesCard film={filmItem}
-                            key={filmItem._id} />
+                            key={filmItem.movieId}
+                            like={like}
+                            delete={deleteFilm}
+                />
             ))}
         </section>
     )

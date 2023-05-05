@@ -1,10 +1,13 @@
 import Header from "../Header/Header";
-import {Link} from "react-router-dom";
-import {useState} from "react";
+import {Link, useHistory} from "react-router-dom";
+import React, {useState} from "react";
 import FormError from "../FormError/FormError";
+import auth from "../../utils/Auth";
+import RequestError from "../RequestError/RequestError";
 
-function Register () {
+function Register (props) {
 
+    const history = useHistory();
     const [isDisable, setIsDisable] = useState(false);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -13,6 +16,49 @@ function Register () {
     const [errorMessageEmail, setErrorMessageEmail] = useState("");
     const [errorMessagePassword, setErrorMessagePassword] = useState("");
     const [valid, setValid] = useState(false);
+    const [registerError, setRegisterError] = useState(false);
+    const [registerErrorMessage, setRegisterErrorMessage] = useState('');
+
+
+    const clearRegisterError = () => {
+        setRegisterError(false)
+        setRegisterErrorMessage('')
+    }
+
+    React.useEffect(() => {
+        clearRegisterError();
+    }, []);
+
+    //регистрация
+    const createAccount = (e) => {
+        e.preventDefault();
+        const userData={
+            name: name,
+            email: email,
+            password: password,
+        }
+        auth.createNewUser(userData)
+            .then(() => {
+                props.login({
+                    email: email,
+                    password: password,
+                });
+                setName("");
+                setEmail("");
+                setPassword("")
+                setValid(false);
+
+            })
+            .catch((error) => {
+                if (error === '409') {
+                    setRegisterErrorMessage('Пользователь с таким email уже существует');
+                } else {
+                    setRegisterErrorMessage('При регистрации пользователя произошла ошибка');
+                }
+                setRegisterError(true);
+            });
+    };
+
 
     const handleInput = (e) => {
         switch (e.target.name) {
@@ -53,7 +99,7 @@ function Register () {
             <main>
                 <section className="register">
                     <h2 className="register__title">Добро пожаловать!</h2>
-                    <form className="register__form">
+                    <form className="register__form" onSubmit={createAccount}>
                         <div className="register__input-cont">
                             <label htmlFor="name-input" className="register__label">Имя</label>
                             <input id="name-input"
@@ -96,7 +142,8 @@ function Register () {
                             <FormError identificator="password-input-error"
                                        message={errorMessagePassword} />
                         </div>
-
+                        <RequestError errorMessage={registerErrorMessage}
+                                      isError={registerError}/>
                         <button type="submit" className={`register__submit-button ${isDisable || !valid ? 'register__submit-button_disabled' : ''}`}>Зарегистрироваться</button>
                     </form>
                     <p className="register__sign-in">

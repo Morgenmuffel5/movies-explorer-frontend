@@ -3,8 +3,10 @@ import {Link} from "react-router-dom";
 import Header from "../Header/Header";
 import {useState, useEffect} from 'react';
 import FormError from "../FormError/FormError";
+import RequestError from "../RequestError/RequestError";
+import api from "../../utils/Api";
 
-function Login () {
+function Login(props) {
 
     const [isDisable, setIsDisable] = useState(false);
     const [email, setEmail] = useState('');
@@ -12,6 +14,24 @@ function Login () {
     const [errorMessageEmail, setErrorMessageEmail] = useState("");
     const [errorMessagePassword, setErrorMessagePassword] = useState("");
     const [valid, setValid] = useState(false);
+
+    React.useEffect(() => {
+        props.clearErrors()
+        setEmail("");
+        setPassword("");
+        setValid(false);
+    }, []);
+
+
+    const login = (e) => {
+        e.preventDefault();
+        const userData = {
+            email: email,
+            password: password,
+        }
+        props.signIn(userData)
+
+    }
 
     const handleInput = (e) => {
         switch (e.target.name) {
@@ -45,7 +65,7 @@ function Login () {
             <main>
                 <section className="login">
                     <h2 className="login__title">Рады видеть!</h2>
-                    <form className="login__form">
+                    <form className="login__form" onSubmit={login}>
                         <div className="login__input-cont">
                             <label htmlFor="email-input" className="login__label">E-mail</label>
                             <input id="email-input"
@@ -57,7 +77,7 @@ function Login () {
                                    onChange={(e) => setEmail(e.target.value)}
                                    onInput={(e) => handleInput(e)}/>
                             <FormError identificator="email-input-error"
-                                       message={errorMessageEmail} />
+                                       message={errorMessageEmail}/>
                         </div>
 
                         <div className="login__input-cont">
@@ -72,10 +92,15 @@ function Login () {
                                    onInput={(e) => handleInput(e)}
                                    required/>
                             <FormError identificator="password-input-error"
-                                       message={errorMessagePassword} />
+                                       message={errorMessagePassword}/>
                         </div>
 
-                        <button type="submit" className={`login__submit-button ${isDisable || !valid ? 'login__submit-button_disabled' : ''}`}>Войти</button>
+                        <RequestError errorMessage={props.errorMessage}
+                                      isError={props.isError}/>
+
+                        <button type="submit"
+                                className={`login__submit-button ${isDisable || !valid ? 'login__submit-button_disabled' : ''}`}>Войти
+                        </button>
                     </form>
                     <p className="login__sign-in">
                         Ещё не зарегистрированы? <Link className="login__link" to={"sign-up"}>Регистрация</Link>
@@ -86,4 +111,4 @@ function Login () {
     )
 }
 
-export default Login ;
+export default Login;

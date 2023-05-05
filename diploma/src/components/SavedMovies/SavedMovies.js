@@ -1,98 +1,92 @@
-import {useState} from "react";
 import Header from "../Header/Header";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 import Navigation from "../Navigation/Navigation";
 import SearchForm from "../SearchForm/SearchForm";
+import React, {useContext, useEffect, useState} from "react";
+import {CurrentUserContext} from "../../context/UserContext";
+import api from "../../utils/Api";
+import EmptySearch from "../EmptySearch/EmptySearch";
+import movieApi from "../../utils/MovieApi";
 
 function SavedMovies(props) {
 
-   /* const [films, setFilms] = useState([]);*/
+    const currentUser = useContext(CurrentUserContext);
+    const [emptySearch, setEmptySearch] = useState(false);
+    const [isShort, setIsShort] = useState(true);
+    const [finalList, setFinalList] = useState([]);
+    const [searchResList, setSearchResList] = useState([]);
 
-    const films = [
-        {
-            country: "Россия",
-            director: "Кто-то",
-            duration: 12,
-            year: "2002",
-            description: "Это тестовый фильм, чтобы проверить верстку карточки",
-            image: "https://img.ixbt.site/live/images/original/02/48/98/2023/02/15/5436708224.jpg",
-            trailerLink: "https://img.ixbt.site/live/images/original/02/48/98/2023/02/15/5436708224.jpg",
-            thumbnail: "https://img.ixbt.site/live/images/original/02/48/98/2023/02/15/5436708224.jpg",
-            owner: "_id1234566",
-            movieId: 123451,
-            nameRU: "Тестовый фильм",
-            nameEN: "Test Film"
-        },
-        {
-            country: "Россия",
-            director: "Кто-то",
-            duration: 12,
-            year: "2002",
-            description: "Это тестовый фильм, чтобы проверить верстку карточки",
-            image: "https://img.ixbt.site/live/images/original/02/48/98/2023/02/15/5436708224.jpg",
-            trailerLink: "https://img.ixbt.site/live/images/original/02/48/98/2023/02/15/5436708224.jpg",
-            thumbnail: "https://img.ixbt.site/live/images/original/02/48/98/2023/02/15/5436708224.jpg",
-            owner: "_id1234566",
-            movieId: 123452,
-            nameRU: "Тестовый фильм",
-            nameEN: "Test Film"
-        },
-        {
-            country: "Россия",
-            director: "Кто-то",
-            duration: 12,
-            year: "2002",
-            description: "Это тестовый фильм, чтобы проверить верстку карточки",
-            image: "https://img.ixbt.site/live/images/original/02/48/98/2023/02/15/5436708224.jpg",
-            trailerLink: "https://img.ixbt.site/live/images/original/02/48/98/2023/02/15/5436708224.jpg",
-            thumbnail: "https://img.ixbt.site/live/images/original/02/48/98/2023/02/15/5436708224.jpg",
-            owner: "_id1234566",
-            movieId: 123453,
-            nameRU: "Тестовый фильм",
-            nameEN: "Test Film"
-        },
-        {
-            country: "Россия",
-            director: "Кто-то",
-            duration: 12,
-            year: "2002",
-            description: "Это тестовый фильм, чтобы проверить верстку карточки",
-            image: "https://img.ixbt.site/live/images/original/02/48/98/2023/02/15/5436708224.jpg",
-            trailerLink: "https://img.ixbt.site/live/images/original/02/48/98/2023/02/15/5436708224.jpg",
-            thumbnail: "https://img.ixbt.site/live/images/original/02/48/98/2023/02/15/5436708224.jpg",
-            owner: "_id1234566",
-            movieId: 123454,
-            nameRU: "Тестовый фильм",
-            nameEN: "Test Film"
-        },
-        {
-            country: "Россия",
-            director: "Кто-то",
-            duration: 12,
-            year: "2002",
-            description: "Это тестовый фильм, чтобы проверить верстку карточки",
-            image: "https://img.ixbt.site/live/images/original/02/48/98/2023/02/15/5436708224.jpg",
-            trailerLink: "https://img.ixbt.site/live/images/original/02/48/98/2023/02/15/5436708224.jpg",
-            thumbnail: "https://img.ixbt.site/live/images/original/02/48/98/2023/02/15/5436708224.jpg",
-            owner: "_id1234566",
-            movieId: 123455,
-            nameRU: "Тестовый фильм",
-            nameEN: "Test Film"
+    //первичная фильтрация по короткометражкам
+    useEffect(() => {
+        const resList = movieApi.filterDuration(isShort, props.films);
+        setFinalList(resList);
+    }, []);
+
+    useEffect(() => {
+        const resList = movieApi.filterDuration(isShort, props.films);
+        setFinalList(resList);
+    }, [props.films])
+
+    useEffect(() => {
+        setEmptySearch(false);
+    }, []);
+
+    const toggleDuration = (isShort, keyWord) => {
+        setIsShort(isShort);
+        if (keyWord !== '') {
+            filterFilms(keyWord, isShort)
+        } else {
+            setFinalList(movieApi.filterDuration(isShort, props.films))
         }
-    ]
+    };
+
+    useEffect(() => {
+        setEmptySearch(finalList.length < 1) ;
+    }, [finalList]);
+
+    const filterFilms = (keyWord, isShort) => {
+        //фильруем по выбраным словам
+        setEmptySearch(false)
+        const searchRes = movieApi.sortByKeyWord(keyWord, props.films);
+        const durationList = movieApi.filterDuration(isShort, searchRes);
+        setFinalList(durationList);
+        setSearchResList(searchRes);
+        if (searchRes.length < 1) {
+            setEmptySearch(true)
+        }
+    }
+
+    const deleteFilm = (id) => {
+        api.deleteFilm(id).then((response) => {
+            props.updateUserFilms();
+        }).then((response) => {
+            console.log('Фильм успешно удален')
+        }).catch((error) => {
+            console.log('не удалось удалить фильм')
+        })
+    }
 
     return (
         <>
             <Header loggedIn={props.loggedIn}
                     openMenu={props.openMenu}/>
             <main className="films">
-                <SearchForm />
-                <MoviesCardList films={films}/>
+                <SearchForm toggle={toggleDuration}
+                            checkbox={isShort}
+                            submit={filterFilms}
+                            savedFilms={true}/>
+                {
+                    emptySearch ?
+
+                        <EmptySearch/> : <MoviesCardList films={finalList}
+                                                         delete={deleteFilm}
+                        />
+                }
             </main>
             <Footer/>
             <Navigation closeMenu={props.closeMenu}
-                        isMenuOpen={props.isMenuOpen} />
+                        isMenuOpen={props.isMenuOpen}/>
         </>
     )
 }

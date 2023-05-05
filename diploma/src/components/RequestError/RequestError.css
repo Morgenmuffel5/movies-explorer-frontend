@@ -1,0 +1,10 @@
+.request-error {
+    padding-top: 50px;
+    color: #EE3465;
+    display: none;
+    text-align: center;
+}
+
+.request-error_visible {
+    display: block;
+}
