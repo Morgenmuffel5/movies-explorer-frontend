@@ -11,7 +11,6 @@ import movieApi from "../../utils/MovieApi";
 
 function SavedMovies(props) {
 
-    const currentUser = useContext(CurrentUserContext);
     const [emptySearch, setEmptySearch] = useState(false);
     const [isShort, setIsShort] = useState(true);
     const [finalList, setFinalList] = useState([]);
@@ -21,6 +20,7 @@ function SavedMovies(props) {
     useEffect(() => {
         const resList = movieApi.filterDuration(isShort, props.films);
         setFinalList(resList);
+        setEmptySearch(false)
     }, []);
 
     useEffect(() => {
@@ -37,13 +37,16 @@ function SavedMovies(props) {
         if (keyWord !== '') {
             filterFilms(keyWord, isShort)
         } else {
-            setFinalList(movieApi.filterDuration(isShort, props.films))
-        }
-    };
+            const newList = movieApi.filterDuration(isShort, props.films)
+            setFinalList(newList);
 
+        }
+
+    };
+/*
     useEffect(() => {
         setEmptySearch(finalList.length < 1) ;
-    }, [finalList]);
+    }, [finalList]);*/
 
     const filterFilms = (keyWord, isShort) => {
         //фильруем по выбраным словам
