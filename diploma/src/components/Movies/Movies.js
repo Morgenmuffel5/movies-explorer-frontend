@@ -13,7 +13,7 @@ import {CurrentUserContext} from "../../context/UserContext";
 import api from "../../utils/Api";
 import MovieApi from "../../utils/MovieApi";
 import SearchError from "../SearchError/SearchError";
-import PopupError from "../PopupError/PopupError";
+import Popup from "../Popup/Popup";
 
 
 function Movies(props) {
@@ -24,7 +24,7 @@ function Movies(props) {
     const [searchResultList, setSearchResultList] = useState([]);
     const [finalResultList, setFinalResultList] = useState([]);
     const [listForShow, setListForShow] = useState([]);
-    const [isShort, setIsShort] = useState(true);
+    const [isShort, setIsShort] = useState(false);
     const [emptySearch, setEmptySearch] = useState(false);
     const [searchError, setSearchError] = useState(false);
     const [likeDeleteError, setLikeDeleteError] = useState(false);
@@ -241,9 +241,10 @@ function Movies(props) {
             </main>
             <Navigation closeMenu={props.closeMenu}
                         isMenuOpen={props.isMenuOpen}/>
-            <PopupError isError={likeDeleteError}
-                        close={closePopup}
-                        message={likeDeleteErrorMessage}/>
+            <Popup isOpen={likeDeleteError}
+                   close={closePopup}
+                   message={likeDeleteErrorMessage}
+                   class={'popup_error'}/>
             <Footer/>
         </>
     )

@@ -12,15 +12,15 @@ import movieApi from "../../utils/MovieApi";
 function SavedMovies(props) {
 
     const [emptySearch, setEmptySearch] = useState(false);
-    const [isShort, setIsShort] = useState(true);
+    const [isShort, setIsShort] = useState(false);
     const [finalList, setFinalList] = useState([]);
     const [searchResList, setSearchResList] = useState([]);
 
     //первичная фильтрация по короткометражкам
     useEffect(() => {
-        const resList = movieApi.filterDuration(isShort, props.films);
-        setFinalList(resList);
-        setEmptySearch(false)
+       /* const resList = movieApi.filterDuration(isShort, props.films);*/
+        setFinalList(props.films);
+        setEmptySearch(false);
     }, []);
 
     useEffect(() => {
@@ -43,10 +43,7 @@ function SavedMovies(props) {
         }
 
     };
-/*
-    useEffect(() => {
-        setEmptySearch(finalList.length < 1) ;
-    }, [finalList]);*/
+
 
     const filterFilms = (keyWord, isShort) => {
         //фильруем по выбраным словам

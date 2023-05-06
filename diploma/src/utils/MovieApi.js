@@ -1,5 +1,6 @@
 import {Film} from "./Film";
-import {SavedFilm} from "./SavedFilm";
+import * as constants from '../utils/constants'
+import {SHORT_DURATION_LENGTH} from "../utils/constants";
 
 class MoviesApi  {
 
@@ -78,7 +79,7 @@ class MoviesApi  {
         const finalList = [];
         if (sortMovieList.length > 0) {
             sortMovieList.forEach((listItem) => {
-                if (listItem.duration < 40) {
+                if (listItem.duration < constants.SHORT_DURATION_LENGTH) {
                     finalList.push(listItem);
                 }
             })

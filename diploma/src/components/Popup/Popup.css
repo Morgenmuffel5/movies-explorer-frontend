@@ -1,32 +1,40 @@
-.popup-error {
+.popup {
     position: absolute;
     bottom: 30px;
     right: 20px;
     width: 368px;
-    background-color: #FF004D;
+    /*background-color: #FF004D;*/
     border-radius: 20px;
     visibility: hidden;
     opacity: 0;
     transition: visibility 0.3s, opacity 0.5s linear;
 }
 
+.popup_error {
+    background-color: #FF004D;
+}
+
+.popup_ok {
+    background-color: forestgreen;
+}
+
 @media all and (max-width: 400px) {
-    .popup-error {
+    .popup {
         width: 200px;
     }
 }
 
-.popup-error_visible {
+.popup_visible {
     visibility: visible;
     opacity: 1;
 }
 
-.popup-error__cont {
+.popup__cont {
     position: relative;
     padding-bottom: 15px;
 }
 
-.popup-error__button {
+.popup__button {
     border: none;
     background-color: transparent;
     background-repeat: no-repeat;
@@ -40,15 +48,15 @@
     top: 10px;
     right: 20px;
 }
-.popup-error__text {
+.popup__text {
     font-size: 14px;
-    padding: 5px 5px 5px 5px;
+    padding: 5px 5px 15px 5px;
     text-align: center;
     box-sizing: border-box;
 }
 
 @media all and (max-width: 400px) {
-    .popup-error__text  {
+    .popup__text  {
         font-size: 12px;
     }
 }

@@ -2,12 +2,14 @@ import Header from "../Header/Header";
 import Navigation from "../Navigation/Navigation";
 import {Link, useHistory} from "react-router-dom";
 import React, {useContext, useState, useEffect} from 'react';
-import { CurrentUserContext } from '../../context/UserContext';
+import {CurrentUserContext} from '../../context/UserContext';
 import FormError from "../FormError/FormError";
 import api from "../../utils/Api";
 import RequestError from "../RequestError/RequestError";
+import * as constants from "../../utils/constants";
+import Popup from "../Popup/Popup";
 
-function Profile (props) {
+function Profile(props) {
 
     const history = useHistory();
     const currentUser = useContext(CurrentUserContext);
@@ -16,9 +18,10 @@ function Profile (props) {
     const [errorMessageName, setErrorMessageName] = useState("");
     const [errorMessageEmail, setErrorMessageEmail] = useState("");
     const [valid, setValid] = useState(true);
-
+    const [popupOpen, setPopupOpen] = useState(false);
     const [editUserError, setEditUserError] = useState(false);
     const [editUserErrorMessage, setEditUserErrorMessage] = useState('');
+    const [isDataEquel, setIsDataEquel] = useState(false);
 
 
     const clearEditUserError = () => {
@@ -37,7 +40,7 @@ function Profile (props) {
         setErrorMessageName('');
     }, [currentUser]);
 
-    function logOut () {
+    function logOut() {
         props.setLoggedIn(false);
         localStorage.clear()
         history.push('/')
@@ -46,26 +49,37 @@ function Profile (props) {
 
     const editProfile = (e) => {
         e.preventDefault();
-        const userData={
-            email:email,
-            name: name,
+        if (currentUser.data.email === email && currentUser.data.name === name) {
+            setIsDataEquel(true);
+        } else {
+            const userData = {
+                email: email,
+                name: name,
+            }
+
+            api.editUser(userData).then((response) => {
+                if (response) {
+                    props.editUser(response);
+                    setPopupOpen(true);
+                }
+            }).catch((error) => {
+                if (error === '409') {
+                    setEditUserErrorMessage('Пользователь с таким email уже существует');
+                } else {
+                    setEditUserErrorMessage('При обновлении профиля произошла ошибка');
+                }
+                setEditUserError(true);
+            })
         }
 
-        api.editUser(userData).then((response) => {
-            if (response) {
-                props.editUser(response);
-            }
-        }).catch((error) => {
-            if (error === '409') {
-                setEditUserErrorMessage('Пользователь с таким email уже существует');
-            } else {
-                setEditUserErrorMessage('При обновлении профиля произошла ошибка');
-            }
-            setEditUserError(true);
-        })
     }
+    const isEmailValid = (value) => {
+        return constants.EMAIL_REGEXP.test(value);
+    };
 
     const handleInput = (e) => {
+        setEditUserError(false);
+        setEditUserErrorMessage('')
         switch (e.target.name) {
             case "name":
                 if (!e.target.validity.valid) {
@@ -76,19 +90,25 @@ function Profile (props) {
                 }
                 break;
             case "email":
-                if (!e.target.validity.valid) {
+                const valid = isEmailValid(e.target.value)
+                if (valid === false) {
                     setValid(false);
-                    setErrorMessageEmail(e.target.validationMessage);
+                    setErrorMessageEmail('Пожалуйста введите адрес электронной почты');
                 } else {
                     setErrorMessageEmail("");
                 }
                 break;
         }
 
-        if (e.target.closest("form").checkValidity()) {
-            setValid(true);
-        }
+
+
     };
+
+    const closePopup = () => {
+        setPopupOpen(false);
+        setIsDataEquel(false);
+    }
+
 
     return (
         <>
@@ -110,12 +130,12 @@ function Profile (props) {
                                    required/>
                         </div>
                         <FormError identificator="name-input-error"
-                                   message={errorMessageName} />
+                                   message={errorMessageName}/>
                         <div className="account__info">
                             <label htmlFor="email-input" className="account__text">Email</label>
                             <input id="email-input"
                                    className="account__input"
-                                   type="text"
+                                   type="email"
                                    name="email"
                                    value={email}
                                    onChange={(e) => setEmail(e.target.value)}
@@ -123,19 +143,30 @@ function Profile (props) {
                                    required/>
                         </div>
                         <FormError identificator="email-input-error"
-                                   message={errorMessageEmail} />
+                                   message={errorMessageEmail}/>
                         <RequestError errorMessage={editUserErrorMessage}
                                       isError={editUserError}/>
-                        <button className="account__button account__button_padding" type="submit" disabled={!valid}>Редактировать</button>
+                        <button className="account__button account__button_padding" type="submit"
+                                disabled={!valid}>Редактировать
+                        </button>
                     </form>
                     <button onClick={logOut}
-                          className="account__button account__button_red-text">
+                            className="account__button account__button_red-text">
                         Выйти из аккаунта
                     </button>
                 </section>
             </main>
             <Navigation closeMenu={props.closeMenu}
-                        isMenuOpen={props.isMenuOpen} />
+                        isMenuOpen={props.isMenuOpen}/>
+            <Popup isOpen={popupOpen}
+                   close={closePopup}
+                   message={'Данные профиля успешно изменены'}
+                   class={'popup_ok'}/>
+
+            <Popup isOpen={isDataEquel}
+                   close={closePopup}
+                   message={'Вы ввели данные профиля аналогичные текущим. Изменения не требуются.'}
+                   class={'popup_error'}/>
         </>
     )
 }

@@ -16,7 +16,7 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import Portfolio from "../Portfolio/Portfolio";
 import movieApi from "../../utils/MovieApi";
 import MovieApi from "../../utils/MovieApi";
-import PopupError from "../PopupError/PopupError";
+
 
 function App() {
 
