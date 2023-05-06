@@ -33,3 +33,7 @@
 @import url(./components/Navigation/Navigation.css);
 /*Error*/
 @import url(./components/FormError/FormError.css);
+@import url(./components/RequestError/RequestError.css);
+@import url(./components/EmptySearch/EmptySearch.css);
+@import url(./components/SearchError/SearchError.css);
+@import url(components/Popup/Popup.css);

@@ -13,7 +13,6 @@
 .search__container {
     display: flex;
     justify-content: space-between;
-    padding-bottom: 31px;
     box-sizing: border-box;
 }
 
@@ -57,6 +56,7 @@
     display: flex;
     justify-content: center ;
     box-sizing: border-box;
+    padding-top: 31px;
 }
 
 .search__toggle {
@@ -69,48 +69,63 @@
     box-sizing: border-box;
 }
 
+
 .search__checkbox {
-    position: absolute;
-    min-width: 1px;
-    height: 1px;
-    display: none;
-    clip-path: inset(0 0 0 0);
-    box-sizing: border-box;
-}
-
-.search__checkbox:checked + .search__visible-checkbox {
-    flex-direction: row-reverse;
-    background-color: #2F2F2F;
-    box-shadow: 0px 4px 4px rgba(50, 50, 71, 0.08), 0px 4px 8px rgba(50, 50, 71, 0.06);
-}
-
-.search__checkbox:disabled + .search__visible-checkbox {
-    background-color: #2F2F2F;
-    box-shadow: 0px 4px 4px rgba(50, 50, 71, 0.08), 0px 4px 8px rgba(50, 50, 71, 0.06);
-}
-
-.search__visible-checkbox {
-    min-width: 36px;
-    height: 20px;
-    background: #2F2F2F;
-    border-radius: 20px;
     display: flex;
-    transition: background-color 0.3s ease;
-    box-sizing: border-box;
+    align-items: center;
+    gap: 14px;
+    font-size: 13px;
+    line-height: 18px;
 }
 
-.search__circle {
-    margin: 2px;
-    min-width: 16px;
-    height: 16px;
-    background: #3DDC84;
+.search__toggle {
+    position: relative;
+    appearance: none;
+    outline: none;
+    width: 36px;
+    height: 20px;
+    background-color: #2F2F2F;
     border-radius: 20px;
-    transition: all 0.3s ease;
-    box-sizing: border-box;
+    transition: all 0.2s;
 }
 
-.search__circle_inactive {
-    background-color: #A0A0A0;
+.search__toggle:hover {
+    cursor: pointer;
+}
+
+.search__toggle::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    background-color: #8B8B8B;
+    border-radius: 20px;
+    margin: auto;
+    transition: all 0.2s;
+}
+
+
+.search__toggle:checked::after {
+    left: calc(100% - 16px - 2px);
+    background-color:#3DDC84;
+}
+
+@media screen and (max-width: 768px) {
+    .search__checkbox {
+        flex-direction: row-reverse;
+        gap: 16px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .search__checkbox {
+        justify-content: center;
+        gap: 13px;
+        font-size: 11px;
+    }
 }
 
 .search__toggle-text {

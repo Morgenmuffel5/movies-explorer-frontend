@@ -5,6 +5,11 @@
     box-sizing: border-box;
 }
 
+.films__link {
+    display: block;
+    cursor: pointer;
+}
+
 @media all and (max-width: 400px) {
     .films__card  {
         flex-direction: column-reverse;

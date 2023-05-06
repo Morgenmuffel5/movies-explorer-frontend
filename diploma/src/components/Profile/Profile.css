@@ -48,12 +48,13 @@
     box-sizing: border-box;
 }
 
-.account__info:nth-child(2) {
+.account__info:nth-child(1) {
     border-bottom: 1px solid #424242;
-    padding-top: 123px;
 }
-.account__info:nth-child(3) {
-    padding-bottom: 220px;
+
+
+.account__form {
+    padding-top: 123px;
 }
 
 @media all and (max-width: 768px) {
@@ -112,6 +113,10 @@
     box-sizing: border-box;
 }
 
+.account__button_padding {
+    margin-top: 220px;
+}
+
 .account__button:hover {
     opacity: 0.8;
 }
@@ -121,4 +126,16 @@
     box-sizing: border-box;
     text-decoration: none;
     font-size: 13px;
+}
+
+.account__input {
+    display: block;
+    width: 100%;
+    background: none;
+    color: white;
+    font-size: 14px;
+    border: none;
+    box-sizing: border-box;
+    text-align: end;
+    max-width: 70%;
 }

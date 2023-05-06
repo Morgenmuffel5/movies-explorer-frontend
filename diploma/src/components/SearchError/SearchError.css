@@ -1,0 +1,9 @@
+.search-error {
+    text-align: center;
+    padding: 20px 0 20px 0;
+    display: none;
+}
+
+.search-error_visible {
+    display: block;
+}
